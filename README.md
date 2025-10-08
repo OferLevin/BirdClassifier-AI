@@ -27,10 +27,6 @@ mkdir Final-Project
 ```bash
 cd Jetson-inference
  ```
-### 4. Train the Model
-```bash
-cd Jetson-inference
- ```
 ### 5. Validate The Model
 ```bash
 yolo task=classify mode=val \
