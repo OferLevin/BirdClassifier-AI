@@ -8,7 +8,7 @@ This project is an AI tool that classifies images of birds into **two species**:
 The model is trained using **YOLOv8** for image classification.
 
 ---
-
+Make Sure Everything Is Sorted into BANDED BROADBILL and BIRD OF PARADISE Folders inside Validate, Train and Test
 ## Steps to Run the Project
 
 ### 1. Install YOLOv8
