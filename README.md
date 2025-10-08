@@ -25,7 +25,7 @@ mkdir Final-Project
 ```
 ### 4. Train the Model
 ```bash
-cd Jetson-inference
+yolo task=classify mode=train \ model=yolov8n-cls.yaml \ data=/home/nvidia04/jetson-inference/Final-Project/Dataset \ epochs=100 \ batch=16
  ```
 ### 5. Validate The Model
 ```bash
