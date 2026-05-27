@@ -29,8 +29,7 @@ const PORT = process.env.PORT || 3000;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === 'your_key_here') {
-  console.error('ERROR: Set ANTHROPIC_API_KEY in .env before starting the server.');
-  process.exit(1);
+  console.warn('WARNING: ANTHROPIC_API_KEY not set — API calls will fail. Set it in .env to enable judging.');
 }
 
 const MIME = {
