@@ -1,47 +1,45 @@
-# Bird Species Classifier
+# VERDICT — AI Sports Debate Judge
 
-## Introduction
-This project is an AI tool that classifies images of birds into **two species**:
-- Birds of Paradise  
-- Banded Broadbill  
+Settle any sports debate with an AI verdict: scores, a ruling, key evidence, and a dissenting opinion.
 
-The model is trained using **YOLOv8** for image classification.
+## Setup
+
+### 1. Add your API key
+
+Open `.env` and replace `your_key_here` with your Anthropic API key:
+
+```
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+### 2. Run the server
+
+```bash
+node server.js
+```
+
+### 3. Open the app
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
-Make Sure Everything Is Sorted into BANDED BROADBILL and BIRD OF PARADISE Folders inside Validate, Train and Test
-## Steps to Run the Project
 
-### 1. Install YOLOv8
-```bash
-pip install ultralytics
-```
-### 2. Navigate to Jetson Inference Folder
-```bash
-cd Jetson-inference
-```
-### 3. Create Project Folder
-```bash
-mkdir Final-Project
-```
-### 4. Train the Model
-```bash
-yolo task=classify mode=train \ model=yolov8n-cls.yaml \ data=/home/nvidia04/jetson-inference/Final-Project/Dataset \ epochs=100 \ batch=16
- ```
-### 5. Validate The Model
-```bash
-yolo task=classify mode=val \
-  model=runs/classify/train2/weights/best.pt \
-  data=/home/nvidia04/jetson-inference/Final-Project/Dataset
- ```
-### 6. Use Model for Predictions
-```bash
-yolo task=classify mode=predict \
-  model=/home/nvidia04/jetson-inference/Final-Project/runs/classify/train2/weights/best.pt \
-  source=/home/nvidia04/jetson-inference/Final-Project/Dataset/test
-```
-### 7. Export The Model
-```bash
-yolo export \
-  model=/home/nvidia04/jetson-inference/Final-Project/runs/classify/train2/weights/best.pt \
-  format=onnx
-```
+## How it works
+
+- `index.html` — the entire frontend (single file, no build tools)
+- `server.js` — a minimal Node.js HTTP server that:
+  - Serves `index.html` at `/`
+  - Proxies `POST /api/verdict` to the Anthropic API, injecting the API key server-side so it's never exposed to the browser
+- `.env` — stores your API key locally
+
+## Requirements
+
+- Node.js 16+ (uses built-in `http` and `https` modules, no npm install needed)
+- An Anthropic API key with access to `claude-sonnet-4-20250514`
+
+## Usage
+
+1. Type any sports debate in the text box (or pick a quick debate)
+2. Click **JUDGE IT** (or press Cmd/Ctrl + Enter)
+3. Read the verdict — scores, ruling, evidence, and dissent
+4. Hit **Copy Verdict** to share a text summary
